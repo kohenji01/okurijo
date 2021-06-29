@@ -47,7 +47,7 @@
           height: 296.5mm;/* 高さには0.5mm余裕をもたせる */
           page-break-after: always;
           box-sizing: border-box;
-          padding: 0 25mm 40mm 25mm;/* 用紙の余白 */
+          padding: 5mm 25mm 35mm 25mm;/* 用紙の余白 */
           font-size: 11pt;
       }
       textarea {
@@ -95,13 +95,9 @@
 <body>
 {*<pre>{$data|print_r}</pre>*}
 
-<section class="page">
-  <div class="text-right un_print_button" style="position: relative;z-index: 2;">
-    <a onclick="{literal}window.print();{/literal}" class="btn btn-success" role="button"><span class="text-white"><i class="fas fa-print"></i>&nbsp;印刷</span></a>
-    <a href="/" class="btn btn-secondary" role="button"><i class="fas fa-backward"></i>&nbsp;戻る</a>
-  </div>
+<section class="page" style="position: relative;">
 
-  <div class="row my-5">
+  <div class="row mt-4 mb-5">
     <div class="col-7 text-left" style="font-size: 0.9rem;line-height: 1.3rem;">
         〒{$data.zipcode}<br>
         {$data.prefectures}{$data.add01}<br>
@@ -111,7 +107,7 @@
         {$data.katagaki}<br>
       <span style="font-size: 1rem;">{$data.last_name}{$data.first_name}　様</span>
     </div>
-    <div class="col-5 text-right mb-5" style="font-size: 0.9rem;line-height: 1.3rem;">
+    <div class="col-5 text-right" style="font-size: 0.9rem;line-height: 1.3rem;">
       <img src="/sarahlogo.png" alt="" style="width: 100%;"><br>
       <div class="text-center my-1">
         合資会社サラシステムズ
@@ -125,8 +121,9 @@
     </div>
   </div>
 
-  <div class="row my-5">
+  <div class="row my-5 pt-5">
     <div class="col-12 text-center h3 mb-5 pt-5">請求書送付のご案内</div>
+
     <div class="text-left mb-3 px-3 " style="font-size: 1.1rem;line-height: 1.7rem;">
       拝啓　時下益々ご清栄のこととお喜び申し上げます。<br>
       平素は格別のお引き立てを賜わり誠に有難うございます。<br>
@@ -140,11 +137,19 @@
   </div>
 
 
-
-  <div class="text-right">
-    <a href="/" class="un_print_button btn btn-secondary btn-block btn-lg p-2" role="button"><i class="fas fa-backward"></i>&nbsp;戻る</a>
+  <!-- 上部ボタン -->
+  <div class="text-right text-nowrap un_print_button" style="position: absolute;z-index: 2;top:0;left:220mm;">
+    <a href="/" class="btn btn-secondary mb-2" role="button"><i class="fas fa-backward"></i>&nbsp;戻る</a><br>
+    <a onclick="{literal}window.print();{/literal}" class="btn btn-success" role="button"><span class="text-white"><i class="fas fa-print"></i>&nbsp;印刷</span></a>
   </div>
 
-</section>
+  <div class="text-left text-nowrap" style="position: absolute;z-index: 2;top:110mm;left:5mm;">
+    <span>--</span>
+  </div>
+  <div class="text-left text-nowrap" style="position: absolute;z-index: 2;top:210mm;left:5mm;">
+    <span>--</span>
+  </div>
+
+</section><!-- ページ単位 -->
 </body>
 </html>
